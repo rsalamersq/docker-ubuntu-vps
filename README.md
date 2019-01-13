@@ -4,7 +4,7 @@ Docker container to provide VPS using latest version of Ubuntu
 
 Usage:
 
-``shell
+```shell
 stargate :: ~/docker-git/docker-ubuntu-vps » docker run -d -P --name vps -e VPS_USER=tom -e VPS_PASSWORD=passowrd inetsix/ubuntu-vps
 2f73b132811ae82a56c9047453ffd8b740211cfbde3e83d5ea7abef3ccf5de5c
 
