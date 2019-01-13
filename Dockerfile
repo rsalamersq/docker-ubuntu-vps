@@ -1,5 +1,13 @@
-FROM ubuntu:latest
+FROM ubuntu:{}
 MAINTAINER Thomas Grimonet "tom@inetsix.net"
+ARG         UBUNTU_VERSION=${UBUNTU_VERSION:-18.10}
+FROM        ubuntu:${UBUNTU_VERSION}
+
+LABEL maintainer="Thomas Grimonet"
+LABEL com.example.version="1.0"
+LABEL vendor1="Inetsix"
+LABEL com.example.release-date="2019-01-13"
+LABEL com.example.version.is-production="True"
 
 # VPS Setup
 ENV VPS_GITHUB_USERS=
@@ -50,7 +58,6 @@ RUN apt-get update && \
                     && \
     mkdir -p /var/run/sshd && \
     mkdir -p /usr/local/bin && \
-    mkdir -p /etc/sudoers.d && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/vps && \
     sed -i 's:session\s*required\s*pam_loginuid.so:session optional pam_loginuid.so:g' /etc/pam.d/sshd && \
     ([ -f /etc/ssh/ssh_host_rsa_key ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key)  && \
