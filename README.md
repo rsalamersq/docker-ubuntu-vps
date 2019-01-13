@@ -11,7 +11,7 @@ stargate :: ~/docker-git/docker-ubuntu-vps » docker run -d -P --name vps -e VPS
 stargate :: ~/docker-git/docker-ubuntu-vps » docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' vps
 172.17.0.2
 
-stargate :: ~/docker-git/docker-ubuntu-vps » ssh 172.17.0.2 -l tom                                                                                                                                                                                                   130 ↵
+stargate :: ~/docker-git/docker-ubuntu-vps » ssh 172.17.0.2 -l tom
 
 The authenticity of host '172.17.0.2 (172.17.0.2)' can't be established.
 ECDSA key fingerprint is SHA256:Q1U1F8zgX25tgcGWJucMa0IR+hbT1subwFGFmLoKXrk.
