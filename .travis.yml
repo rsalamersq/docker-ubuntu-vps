@@ -10,7 +10,7 @@ addons:
 
 env:
   global:
-    - IMAGE="sshd"
+    - IMAGE=${IMAGE}
     - IMAGE_NAME="${DOCKER_NAMESPACE}/${IMAGE}"
 
 before_script:
