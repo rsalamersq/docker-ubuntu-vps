@@ -45,6 +45,8 @@ RUN apt-get update && \
                     python-pip \
                     python-requests \
                     tzdata \
+                    sudo \
+                    iputils-ping \
                     && \
     mkdir -p /var/run/sshd && \
     mkdir -p /usr/local/bin && \
