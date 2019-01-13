@@ -1,5 +1,8 @@
 # Ubuntu Docker VPS
 
+[![](https://images.microbadger.com/badges/image/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own image badge on microbadger.com")
+![](https://img.shields.io/docker/pulls/inetsix/ubuntu-vps.svg)
+
 Docker container to provide VPS using latest version of Ubuntu
 
 Usage:
