@@ -1,5 +1,3 @@
-FROM ubuntu:{}
-MAINTAINER Thomas Grimonet "tom@inetsix.net"
 ARG         UBUNTU_VERSION=${UBUNTU_VERSION:-18.10}
 FROM        ubuntu:${UBUNTU_VERSION}
 
