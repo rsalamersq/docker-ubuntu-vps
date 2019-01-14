@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # This is the only mandidory field
-[ -z "$VPS_USER" ] && (echo "VPS_USER not defined" && exit 1)
-[ -z "$VPS_PASSWORD" ] && [ -z "$VPS_GITHUB_USERS" ] && (echo "Must specify VPS_GITHUB_USERS or VPS_PASSWORD" && exit 1)
+#[ -z "$VPS_USER" ] && (echo "VPS_USER not defined" && exit 1)
+#[ -z "$VPS_PASSWORD" ] && [ -z "$VPS_GITHUB_USERS" ] && (echo "Must specify VPS_GITHUB_USERS or VPS_PASSWORD" && exit 1)
+
+[ -z "$VPS_USER" ] && (echo "VPS_USER not defined, using default username: netscreen" && VPS_USER="netscreen")
+[ -z "$VPS_PASSWORD" ] && (echo "VPS_PASSWORD not defined, using default password: netscreen" && VPS_PASSWORD="netscreen")
 
 echo "Configuring VPS user '$VPS_USER'"
 
@@ -20,17 +23,6 @@ fi
 VPS_HOME=$(getent passwd "$VPS_USER" | cut -d: -f6)
 SSH_CONFIG_DIR="$VPS_HOME/.ssh"
 SSH_AUTHORIZED_KEYS="$SSH_CONFIG_DIR/authorized_keys"
-
-
-if [ -n "${DB_USER:-}" ]; then
-cat<< __EOF__ >"$VPS_HOME/.my.cnf"
-[client]
-user=${DB_USER:-}
-password=${DB_PASS:-}
-database=${DB_NAME:-}
-host=${DB_HOST:-}
-__EOF__
-fi
 
 [ -d "$SSH_CONFIG_DIR" ] || mkdir -p "$SSH_CONFIG_DIR" -m 0700
 
