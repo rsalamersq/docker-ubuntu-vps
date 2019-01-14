@@ -1,5 +1,9 @@
 # Ubuntu Docker VPS
 
+[![Build Status](https://www.travis-ci.org/titom73/docker-ubuntu-vps.svg?branch=master)](https://www.travis-ci.org/titom73/docker-ubuntu-vps)
+![](https://img.shields.io/docker/pulls/inetsix/vps-ubuntu.svg)
+[![](https://images.microbadger.com/badges/image/inetsix/vps-ubuntu.svg)](https://microbadger.com/images/inetsix/vps-ubuntu "Get your own image badge on microbadger.com")
+
 Use this Dockerfile / -image to start a VPS instance upon an Ubuntu container
 
 ## Features
