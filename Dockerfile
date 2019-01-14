@@ -8,9 +8,9 @@ LABEL com.example.release-date="2019-01-13"
 LABEL com.example.version.is-production="True"
 
 # VPS Setup
-ENV VPS_USER=
+ENV VPS_USER="netscreen"
 ENV VPS_GROUP $VPS_USER
-ENV VPS_PASSWORD=
+ENV VPS_PASSWORD="netscreen"
 ENV VPS_ENABLE_SUDO true
 
 # System ENV

@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # This is the only mandidory field
-#[ -z "$VPS_USER" ] && (echo "VPS_USER not defined" && exit 1)
-#[ -z "$VPS_PASSWORD" ] && [ -z "$VPS_GITHUB_USERS" ] && (echo "Must specify VPS_GITHUB_USERS or VPS_PASSWORD" && exit 1)
-
-[ -z "$VPS_USER" ] && (echo "VPS_USER not defined, using default username: netscreen" && VPS_USER="netscreen")
-[ -z "$VPS_PASSWORD" ] && (echo "VPS_PASSWORD not defined, using default password: netscreen" && VPS_PASSWORD="netscreen")
+[ -z "$VPS_USER" ] && (echo "VPS_USER not defined" && exit 1)
+[ -z "$VPS_PASSWORD" ] && [ -z "$VPS_GITHUB_USERS" ] && (echo "Must specify VPS_GITHUB_USERS or VPS_PASSWORD" && exit 1)
 
 echo "Configuring VPS user '$VPS_USER'"
 
