@@ -23,7 +23,6 @@ script: |
           --pull \
           --quiet \
           --build-arg UBUUNTU_VERSION="${UBUNTU_VERSION}" \
-          --tag "${IMAGE_NAME}:latest" \
           --tag "${IMAGE_NAME}:${UBUNTU_VERSION}" \
           --file "${TRAVIS_BUILD_DIR}/Dockerfile" \
           "${TRAVIS_BUILD_DIR}"

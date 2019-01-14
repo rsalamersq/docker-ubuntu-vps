@@ -4,22 +4,5 @@ if [ -n "$VPS_USER" ]; then
   /opt/bin/add-vps-user
 fi
 
-if [ -n "$VPS_GITHUB_USERS" ]; then
-  export VPS_GITHUB_USERS
-  /opt/bin/add-github-users
-fi
-
-if [ -n "${DB_USER:-}" ]; then
-[ -d /etc/env.d ] || mkdir -p /etc/env.d
-cat<< __EOF__ > "/etc/env.d/db.sh"
-export DB_USER=${DB_USER:-}
-export DB_PASS=${DB_PASS:-}
-export DB_NAME=${DB_NAME:-}
-export DB_HOST=${DB_HOST:-}
-__EOF__
-fi
-
-
 echo "Starting SSH..."
 exec /usr/sbin/sshd -D -e
-
