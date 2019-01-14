@@ -1,20 +1,36 @@
 # Ubuntu Docker VPS
 
-[![](https://images.microbadger.com/badges/image/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own image badge on microbadger.com")
+![](https://img.shields.io/docker/build/inetsix/ubuntu-vps.svg)
 ![](https://img.shields.io/docker/pulls/inetsix/ubuntu-vps.svg)
+[![](https://images.microbadger.com/badges/image/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own version badge on microbadger.com")
 
-Docker container to provide VPS using latest version of Ubuntu
+Use this Dockerfile / -image to start a VPS instance upon an Ubuntu container
 
-Usage:
+## Features
+
+- Use latest version of Ubuntu
+- Provides basic VPS tools
+- User defined username and password
+
+## Basic Usage
+
+### Password Definition
 
 ```shell
-stargate :: ~/docker-git/docker-ubuntu-vps » docker run -d -P --name vps -e VPS_USER=tom -e VPS_PASSWORD=passowrd inetsix/ubuntu-vps
-2f73b132811ae82a56c9047453ffd8b740211cfbde3e83d5ea7abef3ccf5de5c
+$ docker run -d -P --name vps 
+        -e VPS_USER=tom 
+        -e VPS_PASSWORD=passowrd 
+        inetsix/ubuntu-vps
+```
 
-stargate :: ~/docker-git/docker-ubuntu-vps » docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' vps
+### Retrieve Container IP address 
+
+```shell
+$ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' vps
 172.17.0.2
 
-stargate :: ~/docker-git/docker-ubuntu-vps » ssh 172.17.0.2 -l tom
+$ ssh 172.17.0.2 -l tom
 
 The authenticity of host '172.17.0.2 (172.17.0.2)' can't be established.
 ECDSA key fingerprint is SHA256:Q1U1F8zgX25tgcGWJucMa0IR+hbT1subwFGFmLoKXrk.
@@ -23,9 +39,54 @@ Failed to add the host to the list of known hosts (/home/tom/.ssh/known_hosts).
 tom@172.17.0.2's password:
 
 Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.13.0-46-generic x86_64)
-...
+tom@vps-container$ 
 ```
 
+## Get port mapping
 
-Original Idea:
+Unless you use `port` option, Docker will automatically bind container ssh port to a random port on host. To get this mapping, use following command:
+
+```shell
+$ docker port vps
+22/tcp -> 0.0.0.0:32785
+```
+
+You can test connectivity from remote device
+
+```shell
+$ ssh $PUBLIC_IP$ -p 32785
+
+tom@stargate.inetsix.net's password:
+
+Welcome to Ubuntu 18.10 (GNU/Linux 4.13.0-46-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+
+                  ___           ___           ___           ___                       ___
+      ___        /\__\         /\  \         /\  \         /\  \          ___        |\__\
+     /\  \      /::|  |       /::\  \        \:\  \       /::\  \        /\  \       |:|  |
+     \:\  \    /:|:|  |      /:/\:\  \        \:\  \     /:/\ \  \       \:\  \      |:|  |
+     /::\__\  /:/|:|  |__   /::\~\:\  \       /::\  \   _\:\~\ \  \      /::\__\     |:|__|__
+  __/:/\/__/ /:/ |:| /\__\ /:/\:\ \:\__\     /:/\:\__\ /\ \:\ \ \__\  __/:/\/__/ ____/::::\__\
+ /\/:/  /    \/__|:|/:/  / \:\~\:\ \/__/    /:/  \/__/ \:\ \:\ \/__/ /\/:/  /    \::::/~~/~
+ \::/__/         |:/:/  /   \:\ \:\__\     /:/  /       \:\ \:\__\   \::/__/      ~~|:|~~|
+  \:\__\         |::/  /     \:\ \/__/     \/__/         \:\/:/  /    \:\__\        |:|  |
+   \/__/         /:/  /       \:\__\                      \::/  /      \/__/        |:|  |
+                 \/__/         \/__/                       \/__/                     \|__|
+
+
+    Important: Nothing will be backed up. Please ensure to use this instance as non permanent one
+
+Last login: Sun Jan 13 21:54:34 2019 from 86.246.176.183
+tom@a71406e0462d:~$
+```
+
+## Original Idea:
 - [cloudposse / ubuntu-vps](https://github.com/cloudposse/ubuntu-vps)
