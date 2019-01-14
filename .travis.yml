@@ -23,11 +23,13 @@ script: |
           --pull \
           --quiet \
           --build-arg UBUUNTU_VERSION="${UBUNTU_VERSION}" \
+          --tag "${IMAGE_NAME}:latest" \
           --tag "${IMAGE_NAME}:${UBUNTU_VERSION}" \
           --file "${TRAVIS_BUILD_DIR}/Dockerfile" \
           "${TRAVIS_BUILD_DIR}"
   if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then
     docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}"
+    docker push "${IMAGE_NAME}:latest"
     docker push "${IMAGE_NAME}:${UBUNTU_VERSION}"
     docker push "${IMAGE_NAME}:latest"
   fi
