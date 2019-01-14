@@ -1,10 +1,5 @@
 # Ubuntu Docker VPS
 
-![](https://img.shields.io/docker/build/inetsix/ubuntu-vps.svg)
-![](https://img.shields.io/docker/pulls/inetsix/ubuntu-vps.svg)
-[![](https://images.microbadger.com/badges/image/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/inetsix/ubuntu-vps.svg)](https://microbadger.com/images/inetsix/ubuntu-vps "Get your own version badge on microbadger.com")
-
 Use this Dockerfile / -image to start a VPS instance upon an Ubuntu container
 
 ## Features
@@ -21,7 +16,7 @@ Use this Dockerfile / -image to start a VPS instance upon an Ubuntu container
 $ docker run -d -P --name vps 
         -e VPS_USER=tom 
         -e VPS_PASSWORD=passowrd 
-        inetsix/ubuntu-vps
+        inetsix/vps-ubuntu
 ```
 
 ### Retrieve Container IP address 
@@ -89,4 +84,4 @@ tom@a71406e0462d:~$
 ```
 
 ## Original Idea:
-- [cloudposse / ubuntu-vps](https://github.com/cloudposse/ubuntu-vps)
+- [cloudposse / vps-ubuntu](https://github.com/cloudposse/vps-ubuntu)

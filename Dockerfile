@@ -22,8 +22,6 @@ ENV PERL_MM_USE_DEFAULT true
 
 USER root
 
-# FIXME I should really make a more minimal vps instance and inherit from it =)
-
 RUN apt-get update && \
     apt-get install -y \
                     software-properties-common \
