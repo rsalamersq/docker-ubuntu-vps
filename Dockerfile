@@ -50,6 +50,8 @@ RUN apt-get update && \
                     tzdata \
                     sudo \
                     iputils-ping \
+                    net-tools \
+                    iproute2 \
                     && \
     mkdir -p /var/run/sshd && \
     mkdir -p /usr/local/bin && \

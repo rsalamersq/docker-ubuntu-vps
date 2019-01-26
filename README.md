@@ -23,6 +23,8 @@ $ docker run -d -P --name vps
         inetsix/vps-ubuntu
 ```
 
+Default username and password are configured to `netscreen` / `netscreen` and will be updated with your `VPS_USER` and `VPS_PASSWORD`
+
 ### Retrieve Container IP address 
 
 ```shell
