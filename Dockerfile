@@ -2,9 +2,9 @@ ARG         UBUNTU_VERSION=${UBUNTU_VERSION:-18.10}
 FROM        ubuntu:${UBUNTU_VERSION}
 
 LABEL maintainer="Thomas Grimonet"
-LABEL com.example.version="1.0"
+LABEL com.example.version="1.1"
 LABEL vendor1="Inetsix"
-LABEL com.example.release-date="2019-01-13"
+LABEL com.example.release-date="2019-05-10"
 LABEL com.example.version.is-production="True"
 
 # VPS Setup
@@ -52,6 +52,7 @@ RUN apt-get update && \
                     iputils-ping \
                     net-tools \
                     iproute2 \
+                    zsh \
                     && \
     mkdir -p /var/run/sshd && \
     mkdir -p /usr/local/bin && \

@@ -13,8 +13,11 @@ PATH="$PATH:/usr/local/bin"
 # Create the user if they don't already exist
 id "$VPS_USER"
 if [ $? -ne 0 ]; then
-  adduser --disabled-password --gecos "" --shell /bin/bash "$VPS_USER"
+  adduser --disabled-password --gecos "" --shell /bin/zsh "$VPS_USER"
   adduser "$VPS_USER" "$VPS_GROUP"
+  echo "Installing zsh customisation"
+  sh -c "$(curl -fsSL https://gitlab.com/titom73/inetsix-zsh/raw/master/tools/install.sh | sh)"
+  mv /root/.* /home/$VPS_USER/
 fi
 
 VPS_HOME=$(getent passwd "$VPS_USER" | cut -d: -f6)
