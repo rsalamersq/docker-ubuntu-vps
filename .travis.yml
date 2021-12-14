@@ -19,3 +19,4 @@ before_script:
   
 script: |
   sh ${TRAVIS_BUILD_DIR}/build.sh
+
